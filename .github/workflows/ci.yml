@@ -90,7 +90,7 @@ jobs:
   #       run: bandit -r src/
 
   package:
-    needs: quality
+    needs: coverage
     runs-on: ubuntu-latest
 
     steps:
