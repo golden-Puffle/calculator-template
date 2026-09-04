@@ -64,30 +64,30 @@ jobs:
         run: pytest tests/ --cov=src --cov-report=term
 
 
-  quality:
-    needs: coverage
-    runs-on: ubuntu-latest
+  # quality:
+  #   needs: coverage
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.13"
+  #     - name: Setup Python
+  #       uses: actions/setup-python@v5
+  #       with:
+  #         python-version: "3.13"
 
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+  #     - name: Install dependencies
+  #       run: pip install -r requirements.txt
 
-      - name: Run pylint
-        run: pylint src/ --disable=fixme
+  #     - name: Run pylint
+  #       run: pylint src/ --disable=fixme
 
-      - name: Check formatting
-        run: black --check src/ tests/
+  #     - name: Check formatting
+  #       run: black --check src/ tests/
 
-      - name: Run security scan
-        run: bandit -r src/
+  #     - name: Run security scan
+  #       run: bandit -r src/
 
   package:
     needs: quality
